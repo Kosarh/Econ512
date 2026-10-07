@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Safer Ground, Tighter Markets</title>
+<style>
+@font-face { font-family: "Fraunces"; src: url("assets/fonts/Fraunces-Variable.ttf") format("truetype"); font-weight: 100 900; font-style: normal; font-display: block; }
+@font-face { font-family: "Fraunces"; src: url("assets/fonts/Fraunces-Italic-600.ttf") format("truetype"); font-weight: 600; font-style: italic; font-display: block; }
+@font-face { font-family: "Fraunces"; src: url("assets/fonts/Fraunces-Italic-700.ttf") format("truetype"); font-weight: 700; font-style: italic; font-display: block; }
+@font-face { font-family: "Source Sans 3"; src: url("assets/fonts/SourceSans3-400.ttf") format("truetype"); font-weight: 400; font-style: normal; font-display: block; }
+@font-face { font-family: "Source Sans 3"; src: url("assets/fonts/SourceSans3-600.ttf") format("truetype"); font-weight: 600; font-style: normal; font-display: block; }
+@font-face { font-family: "Source Sans 3"; src: url("assets/fonts/SourceSans3-700.ttf") format("truetype"); font-weight: 700; font-style: normal; font-display: block; }
+
+@page { size: 36in 48in; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+html, body { width: 36in; height: 48in; overflow: hidden; background: #031018; }
+.poster {
+  position: relative; width: 36in; height: 48in; overflow: hidden;
+  color: #fffaf2; font-family: "Source Sans 3", sans-serif;
+}
+.bg { position: absolute; inset: 0; width: 36in; height: 48in; object-fit: cover; z-index: 0; }
+
+.arrows {
+  position: absolute; inset: 0; width: 36in; height: 48in; z-index: 12;
+  pointer-events: none; overflow: visible;
+}
+.arrows path {
+  fill: none; stroke: #ffe7b0; stroke-width: 0.11; stroke-linecap: round; stroke-linejoin: round;
+  filter: drop-shadow(0 0.04in 0.05in rgba(0,0,0,0.7));
+}
+
+/* Pen loop: the ring is the mark. Water stays visible up to the letters. */
+.loop {
+  position: absolute;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center;
+  background: transparent;
+  border: 0.045in solid rgba(255,248,236,0.94);
+  box-shadow: 0 0 0 0.012in rgba(0,0,0,0.35), inset 0 0 0 0.012in rgba(255,255,255,0.28);
+}
+.loop .wash {
+  position: absolute; left: 12%; right: 12%; top: 16%; bottom: 16%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 50% 50%,
+    rgba(3,10,18,0.94) 0%,
+    rgba(3,10,18,0.9) 34%,
+    rgba(3,10,18,0.45) 52%,
+    rgba(3,10,18,0) 68%);
+}
+.loop .inner { position: relative; z-index: 1; width: 58%;
+  text-shadow: 0 0.015in 0.01in rgba(0,0,0,0.95), 0 0 0.12in rgba(0,0,0,0.85), 0 0.04in 0.1in rgba(0,0,0,0.7);
+}
+.kicker {
+  font-size: 0.15in; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #f6d9a4;
+}
+h2, .title {
+  font-family: Fraunces, serif; font-weight: 640;
+  font-variation-settings: "opsz" 96, "SOFT" 30, "wght" 640;
+  letter-spacing: -0.03em; line-height: 0.94;
+}
+.loop p.title { font-size: 0.92in; line-height: 0.9; margin: 0.06in 0 0.08in; }
+.title em { font-style: italic; font-weight: 560; color: #ffe7b8; }
+h2 { font-size: 0.42in; line-height: 1.08; margin: 0.05in 0 0.12in; }
+.loop p { font-size: 0.22in; line-height: 1.25; }
+.loop p.kicker { font-size: 0.15in; }
+.loop p.by { font-size: 0.155in; }
+.loop p.tiny { font-size: 0.15in; line-height: 1.25; }
+.loop p + p { margin-top: 0.06in; }
+.by { margin-top: 0.08in; font-size: 0.15in; line-height: 1.3; color: rgba(255,250,242,0.92); }
+.by b { font-weight: 700; }
+.ask { font-weight: 700; }
+
+.shot { background: #101820; border-width: 0.05in; }
+.shot .wash { display: none; }
+.shot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.shot .veil {
+  position: absolute; left: 0; right: 0; bottom: 0; height: 42%;
+  background: linear-gradient(to top, rgba(3,8,14,0.9) 12%, rgba(3,8,14,0.25) 70%, transparent);
+}
+.shot .inner { position: absolute; left: 12%; right: 12%; bottom: 0.55in; width: auto; }
+
+.pair { display: flex; justify-content: center; gap: 0.35in; margin-top: 0.06in; }
+.pair b, .loop p.giant {
+  font-family: Fraunces, serif; font-weight: 680;
+  font-variation-settings: "opsz" 120, "wght" 680;
+  letter-spacing: -0.04em; line-height: 0.82;
+}
+.pair b { display: block; font-size: 0.92in; }
+.loop p.giant { font-size: 1.2in; margin: 0.02in 0 0.02in; color: #d9ffd4; }
+.pair span { display: block; margin-top: 0.04in; font-size: 0.16in; line-height: 1.15; font-weight: 600; }
+.neg { color: #ffb0a0; }
+.gold { color: #ffe3a6; }
+
+.stats { display: flex; justify-content: center; gap: 0.5in; }
+.stats b {
+  display: block; font-family: Fraunces, serif; font-size: 0.86in; line-height: 0.84;
+  letter-spacing: -0.04em; font-variation-settings: "opsz" 100, "wght" 680;
+}
+.stats span { display: block; margin-top: 0.03in; font-size: 0.16in; line-height: 1.15; font-weight: 600; }
+
+.row3 { display: flex; justify-content: space-between; gap: 0.18in; margin-top: 0.14in; }
+.row3 b {
+  display: block; font-family: Fraunces, serif; font-size: 0.5in; line-height: 0.86;
+  letter-spacing: -0.03em; font-variation-settings: "opsz" 80, "wght" 680;
+}
+.row3 span { display: block; font-size: 0.145in; line-height: 1.15; margin-top: 0.03in; font-weight: 600; }
+
+.eq {
+  font-family: Fraunces, serif; font-weight: 560; font-size: 0.22in; line-height: 1.28;
+  white-space: nowrap; margin-top: 0.02in;
+}
+.eq sub, .eq sup { font-size: 0.62em; }
+.frac { display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; margin: 0 0.05in; line-height: 1.02; }
+.frac .num { border-bottom: 1.5px solid currentColor; padding: 0 0.05in 0.01in; }
+.frac .den { padding: 0.01in 0.05in 0; }
+.d { display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; line-height: 1; }
+.d::before { content: ""; width: 0.16em; height: 0.16em; border-radius: 50%; background: currentColor; margin-bottom: 0.03em; }
+.labs { display: flex; justify-content: center; gap: 0.55in; margin-top: 0.06in; }
+.labs span { font-size: 0.13in; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #f6d9a4; }
+.tiny { font-size: 0.145in; line-height: 1.28; margin-top: 0.06in; color: rgba(255,250,242,0.92); }
+.e6 .inner { width: 74%; }
+.e6 .tiny { width: 86%; margin-left: auto; margin-right: auto; }
+
+.e1 { left: 0.55in; top: 0.28in; width: 19.4in; height: 11.6in; z-index: 3; }
+.e2 { left: 17.4in; top: 6.35in; width: 17.6in; height: 11.4in; z-index: 4; }
+.e3 { left: 0.35in; top: 12.15in; width: 16.8in; height: 10.5in; z-index: 5; }
+.e4 { left: 16.3in; top: 19.15in; width: 18.7in; height: 10.6in; z-index: 6; }
+.e4 .inner { width: 66%; }
+.e5 { left: 0.45in; top: 24.85in; width: 17.2in; height: 10.2in; z-index: 7; }
+.e6 { left: 12.6in; top: 31.35in; width: 22.4in; height: 10.0in; z-index: 8; }
+.e7 { left: 0.35in; top: 37.85in; width: 17.6in; height: 9.5in; z-index: 9; }
+.e7 .inner { width: 70%; }
+.e8 { left: 16.9in; top: 39.7in; width: 18.2in; height: 7.7in; z-index: 10; }
+.e8 h2 { font-style: italic; font-weight: 560; }
+</style>
+</head>
+<body>
+<div class="poster">
+  <img class="bg" src="assets/flood-sheet.jpg" alt="">
+
+  <svg class="arrows" viewBox="0 0 36 48">
+    <defs>
+      <marker id="arr" markerUnits="userSpaceOnUse" markerWidth="0.85" markerHeight="0.85" refX="0.7" refY="0.42" orient="auto">
+        <path d="M0,0 L0.85,0.42 L0,0.85 Z" fill="#ffe7b0"/>
+      </marker>
+    </defs>
+    <path marker-end="url(#arr)" d="M16.2,8.6 C18.4,9.6 18.8,10.6 19.6,11.4"/>
+    <path marker-end="url(#arr)" d="M18.6,16.8 C16.2,17.8 15.0,18.4 13.6,19.0"/>
+    <path marker-end="url(#arr)" d="M15.4,21.2 C17.8,22.2 18.2,23.4 19.2,24.2"/>
+    <path marker-end="url(#arr)" d="M16.6,28.6 C14.2,29.6 13.0,30.4 11.6,31.2"/>
+    <path marker-end="url(#arr)" d="M15.8,34.2 C17.8,35.0 18.4,36.0 19.6,36.6"/>
+  </svg>
+
+  <section class="loop e1">
+    <div class="wash"></div>
+    <div class="inner">
+      <p class="kicker">Risk Rating 2.0 · April 2023</p>
+      <p class="title">Safer Ground,<br><em>Tighter Markets</em></p>
+      <p>The public was paying for the water. Subsidized insurance made floodplain houses cheap, and the fiscal bill stayed with the government.</p>
+      <p class="ask">Does the shock stop at the floodplain, or does it tighten safer ground too?</p>
+      <p class="by"><b>Kosar Hosseini</b> · Katherine Yoder Zipp · Scott Colby · Zhengqi Liu<br>Pennsylvania State University · SUNY Morrisville</p>
+    </div>
+  </section>
+
+  <section class="loop shot e2">
+    <img src="assets/destroyed-houses.jpg" alt="Flood-damaged houses">
+    <div class="veil"></div>
+    <div class="inner">
+      <p class="kicker">02 · What the old premium left behind</p>
+      <h2>A private loss, and a public one.</h2>
+    </div>
+  </section>
+
+  <section class="loop shot e3">
+    <img src="assets/insurance-office.jpg" alt="An insurance company">
+    <div class="veil"></div>
+    <div class="inner">
+      <p class="kicker">03 · The insurer</p>
+      <div class="stats">
+        <div><b class="neg">+82%</b><span>premium component<br>Allegheny County</span></div>
+        <div><b class="gold">~18%</b><span>annual cap. Buyers<br>capitalize the full path.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="loop e4">
+    <div class="wash"></div>
+    <div class="inner">
+      <p class="kicker">04 · Inside the floodplain</p>
+      <h2>The price falls first.<br>The houses leave later.</h2>
+      <div class="pair">
+        <div><b class="neg">−28.9%</b><span>price on impact<br>$110,000 → $78,242</span></div>
+        <div><b class="neg">−33.5%</b><span>long-run stock<br>4,036 → 2,686</span></div>
+      </div>
+      <p class="tiny">Long-run price $78,340 (−28.8%). The stock cannot jump, so the price does. ψ<sub>NF</sub> does not change.</p>
+    </div>
+  </section>
+
+  <section class="loop e5">
+    <div class="wash"></div>
+    <div class="inner">
+      <p class="kicker">05 · Safer ground</p>
+      <h2>No new premium.<br>The county still tightens.</h2>
+      <p class="giant">+0.15%</p>
+      <p>Long-run price, $218,000 → $218,326. Stock 379,126 → 379,807.</p>
+      <p class="tiny">On impact, $218,117 (+0.054%). County stock 383,162 → 382,493 (−0.17%). Safer ground is already 98.95% of Allegheny.</p>
+    </div>
+  </section>
+
+  <section class="loop e6">
+    <div class="wash"></div>
+    <div class="inner">
+      <p class="kicker">06 · The model</p>
+      <h2>One rent. Two building sites.</h2>
+      <div class="labs"><span>Demand</span><span>Supply</span></div>
+      <p class="eq">R(S) =
+        <span class="frac"><span class="num">α (W − β<sub>c</sub>)</span><span class="den">S − β<sub>s</sub> (1 − α)</span></span>
+        S = S<sub>NF</sub> + S<sub>FP</sub>
+      </p>
+      <p class="eq">Y<sub>i</sub>(P<sub>i</sub>) = a<sub>i</sub> P<sub>i</sub><sup>ε</sup></p>
+      <p class="eq"><span class="d">P</span><sub>NF</sub> = ψ<sub>NF</sub> P<sub>NF</sub> − R(S)
+        &nbsp; <span class="d">P</span><sub>FP</sub> = ψ<sub>FP</sub>(m) P<sub>FP</sub> − R(S)</p>
+      <p class="eq"><span class="d">S</span><sub>NF</sub> = a<sub>NF</sub> P<sub>NF</sub><sup>ε</sup> − δ S<sub>NF</sub>
+        &nbsp; <span class="d">S</span><sub>FP</sub> = a<sub>FP</sub> P<sub>FP</sub><sup>ε</sup> − δ S<sub>FP</sub></p>
+      <p class="tiny">ψ<sub>FP</sub>(m) = ψ<sup>0</sup><sub>FP</sub> + f m. The shock is an 82% rise in the premium component, not m = 0.82.<br>ψ<sub>NF</sub> = 0.059 · ψ<sup>0</sup><sub>FP</sub> = 0.1169 · f = 0.0579 · ε = 0.08, then 1.20 · δ = 0.02.<br>If σ = 0.5, the safer long-run price rises 9.9%, not 0.15%.</p>
+    </div>
+  </section>
+
+  <section class="loop e7">
+    <div class="wash"></div>
+    <div class="inner">
+      <p class="kicker">07 · Miami-Dade · 85% premium increase</p>
+      <h2>Half the homes sit in the flood.</h2>
+      <div class="row3">
+        <div><b style="color:#d9ffd4">+2.60%</b><span>X · outside<br>stock +3.13%</span></div>
+        <div><b class="neg">−5.25%</b><span>A · inland<br>stock −6.26%</span></div>
+        <div><b class="neg">−16.68%</b><span>V · coastal<br>stock −19.67%</span></div>
+      </div>
+      <p class="tiny">Long-run prices. About 50.5% of homes are in A or V. Short run: X +1.04%, A −6.79%, V −17.94%.</p>
+    </div>
+  </section>
+
+  <section class="loop e8">
+    <div class="wash"></div>
+    <div class="inner">
+      <p class="kicker">08 · Policy</p>
+      <h2>Price the risk. Make room on higher ground.</h2>
+      <p>Keep property-level premiums. Pair them with supply where building is safe, or the region ends with fewer houses.</p>
+      <p class="tiny">Counterfactuals, not causal estimates. Losses are not yet quantified. Next: every U.S. county, and σ.</p>
+    </div>
+  </section>
+</div>
+</body>
+</html>
