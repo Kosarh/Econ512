@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Safer Ground, Tighter Markets</title>
+<style>
+  @page { size: 36in 54in; margin: 0; }
+  * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html, body {
+    margin: 0; padding: 0;
+    width: 36in; height: 54in;
+    overflow: hidden;
+    font-family: Inter, "DejaVu Sans", sans-serif;
+    color: #16325c;
+  }
+  .page {
+    position: relative;
+    width: 36in; height: 54in;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 8% 18%, rgba(255,255,255,.55) 0 1.1in, transparent 1.2in),
+      radial-gradient(circle at 92% 8%, rgba(255,255,255,.35) 0 .8in, transparent .9in),
+      linear-gradient(180deg,
+        #d7f1ff 0in,
+        #b9e4fb 3.15in,
+        #7ec4f3 4.15in,
+        #3d98e4 4.7in,
+        #1b78d2 8in,
+        #146ec8 28in,
+        #0f66c0 46in,
+        #0c5cb4 54in);
+  }
+
+  /* decorative bubbles in the water gutters */
+  .bub {
+    position: absolute; border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, rgba(255,255,255,.85), rgba(255,255,255,.15) 60%, rgba(255,255,255,0) 70%);
+    border: 1.5px solid rgba(255,255,255,.45);
+    z-index: 1;
+  }
+
+  header.hero {
+    position: absolute; left: 0; top: 0; width: 36in; height: 4.22in; z-index: 3;
+  }
+  .hero-copy {
+    position: absolute; left: 2.6in; right: 2.7in; top: 0.28in;
+    text-align: center; z-index: 4;
+  }
+  h1 {
+    margin: 0;
+    font-family: "Noto Sans Display", Inter, sans-serif;
+    font-weight: 700;
+    font-size: 80pt;
+    line-height: 0.95;
+    letter-spacing: -0.015em;
+    color: #0b2f72;
+  }
+  .subtitle {
+    margin: 0.06in 0 0;
+    font-family: "Noto Sans Display", Inter, sans-serif;
+    font-weight: 600;
+    font-size: 28pt;
+    line-height: 1.12;
+    color: #0e3c86;
+  }
+  .subtitle b { font-weight: 750; }
+  .authors {
+    margin: 0.08in 0 0;
+    font-size: 20pt;
+    font-weight: 650;
+    color: #0c3478;
+    letter-spacing: 0.01em;
+  }
+  .affil {
+    margin: 0.02in 0 0;
+    font-size: 16pt;
+    font-weight: 600;
+    color: #1a4e9a;
+  }
+  .dotsep { margin: 0 0.12in; color: #7aa4de; }
+
+  .road-sign {
+    position: absolute; left: 0.28in; top: 0.22in; z-index: 5;
+    width: 1.72in; background: #f4f7fb; border: 3px solid #234e93;
+    border-radius: 0.08in; text-align: center; padding: 0.08in 0.06in 0.09in;
+    box-shadow: 0 0.04in 0.08in rgba(10,40,80,.25);
+    transform: rotate(-6deg);
+  }
+  .road-sign .pole { display: none; }
+  .road-sign b {
+    display: block; font-size: 15pt; letter-spacing: 0.04em; color: #16325c; line-height: 1.05;
+  }
+  .policy-sign {
+    position: absolute; right: 0.26in; top: 0.18in; z-index: 5;
+    width: 2.45in; background: linear-gradient(180deg, #f7fbff, #e7f2ff);
+    border: 2.5px solid #1d5fbf; border-radius: 0.1in;
+    padding: 0.08in 0.1in 0.09in; text-align: center;
+    box-shadow: 0 0.05in 0.1in rgba(10,40,90,.22);
+    transform: rotate(3deg);
+  }
+  .policy-sign b {
+    display: block; color: #0d3f93; font-size: 12pt; letter-spacing: 0.03em; line-height: 1.16;
+  }
+
+  .card {
+    position: absolute;
+    background: rgba(255,255,255,.97);
+    border-radius: 0.2in;
+    border: 2.5px solid rgba(255,255,255,.85);
+    box-shadow: 0 0.07in 0.16in rgba(7, 40, 90, 0.22), inset 0 0 0 1.5px rgba(30,110,200,.08);
+    z-index: 2;
+    overflow: hidden;
+    padding: 0.16in 0.22in 0.14in 0.22in;
+    display: flex;
+    flex-direction: column;
+  }
+  .hd {
+    display: flex; align-items: flex-start; gap: 0.12in;
+    margin-bottom: 0.08in;
+  }
+  .badge {
+    flex: 0 0 auto;
+    width: 0.72in; height: 0.72in; border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #3d8ef0, #0c3f8f 70%);
+    color: white;
+    font-family: "Noto Sans Display", Inter, sans-serif;
+    font-weight: 700; font-size: 30pt;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 0.04in 0.08in rgba(10,40,100,.28), inset 0 0 0 2px rgba(255,255,255,.35);
+  }
+  .hd h2 {
+    margin: 0.02in 0 0;
+    font-family: "Noto Sans Display", Inter, sans-serif;
+    font-size: 34pt; line-height: 1.02; font-weight: 700; color: #0c3d8c;
+    letter-spacing: -0.015em;
+  }
+  .kicker {
+    margin: 0.03in 0 0;
+    font-size: 13.5pt; font-weight: 750; letter-spacing: 0.045em;
+    color: #1565c0; text-transform: uppercase;
+  }
+  p { margin: 0; }
+  .body {
+    font-size: 20pt; line-height: 1.34; color: #1a3d74; font-weight: 500;
+  }
+  .body strong { color: #0e3e8e; font-weight: 750; }
+
+  .call {
+    background: linear-gradient(180deg, #fff8dc, #fff3c4);
+    border-radius: 0.12in;
+    padding: 0.1in 0.14in;
+    color: #2a4e86;
+    font-size: 14.5pt;
+    line-height: 1.28;
+    font-weight: 500;
+  }
+  .call b { color: #0e3e8e; font-weight: 750; }
+
+  /* panel positions */
+  #s1 { left: 0.40in; top: 4.32in; width: 17.46in; height: 9.55in; }
+  #s2 { left: 18.14in; top: 4.32in; width: 17.46in; height: 9.55in; }
+  #s3 { left: 0.40in; top: 14.15in; width: 17.46in; height: 12.35in; }
+  #s4 { left: 18.14in; top: 14.15in; width: 17.46in; height: 12.35in; }
+  #s5 { left: 0.40in; top: 26.78in; width: 17.46in; height: 10.15in; }
+  #s6 { left: 18.14in; top: 26.78in; width: 17.46in; height: 10.15in; }
+  #s7 { left: 0.40in; top: 37.21in; width: 17.46in; height: 9.30in; }
+  #s8 { left: 18.14in; top: 37.21in; width: 17.46in; height: 9.30in; }
+  #s9 { left: 0.40in; top: 46.79in; width: 35.20in; height: 6.78in; }
+
+  .split { display: grid; grid-template-columns: 1fr 5.15in; gap: 0.16in; flex: 1; min-height: 0; }
+  .col { display: flex; flex-direction: column; gap: 0.1in; min-height: 0; }
+  .art {
+    border-radius: 0.12in; overflow: hidden;
+    background: linear-gradient(180deg, #e7f4ff, #d5ecff);
+    border: 1.5px solid #d3e6f8;
+  }
+  .art svg { display: block; width: 100%; height: 100%; }
+
+  .qrow { display: flex; gap: 0.12in; align-items: flex-start; }
+  .icon {
+    flex: 0 0 auto; width: 0.46in; height: 0.46in; border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #4b97f5, #0d4eae);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.3);
+  }
+  .icon svg { width: 0.26in; height: 0.26in; }
+  .qtext { font-size: 16pt; line-height: 1.25; color: #24508f; font-weight: 550; padding-top: 0.04in; }
+  .qtext b { color: #0c3d8c; font-weight: 750; }
+
+  .mech {
+    flex: 1; min-height: 0;
+    display: grid;
+    grid-template-columns: 1fr 3.15in 1fr;
+    gap: 0.1in;
+  }
+  .side {
+    border-radius: 0.12in;
+    padding: 0.1in 0.1in 0.1in;
+    display: flex; flex-direction: column; gap: 0.08in; min-height: 0;
+  }
+  .side.in { background: linear-gradient(180deg, #fff1f0, #ffe4e2); }
+  .side.out { background: linear-gradient(180deg, #f3f8ff, #e7f1ff); }
+  .side h3 {
+    margin: 0; display: flex; align-items: center; gap: 0.08in;
+    font-size: 15pt; line-height: 1.05;
+  }
+  .side.in h3 { color: #c62828; }
+  .side.out h3 { color: #0d47a1; }
+  .side h3 small { display: block; font-size: 10.5pt; font-weight: 600; color: #5c7194; margin-top: 0.02in; }
+  .chip {
+    background: white; border-radius: 0.1in;
+    padding: 0.055in 0.1in;
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 13.5pt; font-weight: 650; color: #1e3f78;
+    box-shadow: 0 0.015in 0.04in rgba(20,50,100,.06);
+    flex: 1;
+  }
+  .chip .arr { font-style: normal; font-weight: 800; font-size: 16pt; }
+  .chip.up .arr { color: #1b8a3e; }
+  .chip.down .arr { color: #d32f2f; }
+  .mid {
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.08in;
+  }
+  .arrow-label {
+    background: linear-gradient(90deg, #1565c0, #0d47a1);
+    color: white; font-weight: 750; font-size: 11pt; letter-spacing: 0.04em;
+    text-align: center; line-height: 1.15;
+    padding: 0.1in 0.12in; border-radius: 0.1in;
+    width: 100%;
+    clip-path: polygon(0 0, 92% 0, 100% 50%, 92% 100%, 0 100%);
+  }
+
+  .eqbox {
+    border: 1.5px solid #c5daf3;
+    border-radius: 0.12in;
+    overflow: hidden;
+    background: white;
+    margin-top: 0.08in;
+  }
+  .eqbox h3 {
+    margin: 0; background: linear-gradient(90deg, #0d4eae, #1565c0);
+    color: white; font-size: 13pt; font-weight: 700;
+    padding: 0.05in 0.12in;
+    letter-spacing: 0.01em;
+  }
+  .eqbox h3 span { font-weight: 500; opacity: .92; }
+  .eqbody { padding: 0.08in 0.08in 0.09in; }
+  .eqsplit { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 0.08in; }
+  .eqline {
+    display: flex; align-items: center; justify-content: center;
+    gap: 0.18em; flex-wrap: wrap;
+    font-style: italic; font-size: 13.5pt; color: #14325f; line-height: 1.05;
+    text-align: center;
+  }
+  .eqline.sm { font-size: 12.6pt; }
+  .frac {
+    display: inline-flex; flex-direction: column; align-items: center;
+    vertical-align: middle; margin: 0 0.08em; font-style: italic; line-height: 1.12;
+  }
+  .frac .top { border-bottom: 2px solid #14325f; padding: 0 0.28em 0.04em; white-space: nowrap; }
+  .frac .bot { padding: 0.04em 0.28em 0; white-space: nowrap; }
+  sub, sup { font-size: 0.68em; line-height: 0; }
+  .psi {
+    margin: 0.06in auto 0; width: fit-content;
+    background: #e8f3ff; border-radius: 0.3in;
+    padding: 0.04in 0.18in;
+    font-style: italic; font-size: 13.5pt; color: #14325f;
+  }
+  .dyn {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0.06in 0.08in;
+  }
+  .caplab {
+    font-style: normal; font-size: 11pt; font-weight: 650; color: #0d4eae;
+    text-align: center; margin-bottom: 0.04in;
+  }
+
+  table { width: 100%; border-collapse: separate; border-spacing: 0; }
+  th, td { text-align: center; padding: 0.055in 0.06in; }
+  thead th {
+    background: #0d4eae; color: white; font-weight: 700; font-size: 13pt;
+  }
+  thead th:first-child { border-radius: 0.08in 0 0 0; }
+  thead th:last-child { border-radius: 0 0.08in 0 0; }
+  tbody td {
+    font-size: 14.5pt; font-weight: 650; color: #1a3f7a;
+    border-bottom: 1.5px solid #e3eef9;
+    background: #f8fbff;
+    font-variant-numeric: tabular-nums;
+  }
+  tbody td.lab { text-align: left; font-weight: 700; color: #0e3e8e; background: white; font-size: 13.5pt; }
+  .vals td.num { font-size: 18pt; font-weight: 750; color: #1251b0; }
+
+  .bottom5 {
+    display: grid; grid-template-columns: 1.35fr 0.8fr; gap: 0.12in;
+    margin-top: 0.1in; flex: 1; min-height: 0;
+  }
+  .inputs {
+    background: linear-gradient(180deg, #fff8dc, #fff1c2);
+    border-radius: 0.12in; padding: 0.1in 0.14in 0.08in;
+  }
+  .inputs h3 { margin: 0 0 0.04in; color: #0e3e8e; font-size: 14pt; }
+  .inputs .row {
+    display: flex; justify-content: space-between; gap: 0.12in;
+    font-size: 13pt; padding: 0.028in 0; color: #2c4f86; font-weight: 550;
+    border-bottom: 1px solid rgba(20,60,120,.08);
+  }
+  .inputs .row b { color: #0e3e8e; font-variant-numeric: tabular-nums; font-weight: 750; }
+  .sim {
+    background: linear-gradient(180deg, #f4f9ff, #e8f2ff);
+    border-radius: 0.12in; padding: 0.12in 0.12in;
+    display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
+  }
+  .sim .tag { font-size: 12pt; font-weight: 700; color: #1565c0; }
+  .sim .big { font-size: 26pt; font-weight: 800; color: #0c3d8c; line-height: 1; margin: 0.04in 0; font-family: "Noto Sans Display", Inter, sans-serif; }
+  .sim p { font-size: 12.5pt; color: #2c4f86; line-height: 1.25; font-weight: 550; }
+
+  .banner {
+    background: linear-gradient(90deg, #0c3f8f, #1565c0);
+    color: white; border-radius: 0.1in;
+    padding: 0.07in 0.12in; font-weight: 700; font-size: 14.5pt;
+    display: flex; align-items: center; gap: 0.08in;
+    margin: 0.02in 0 0.08in;
+  }
+  .res td.lab { font-size: 14.5pt; }
+  .res td { font-size: 18pt; font-weight: 800; font-variant-numeric: tabular-nums; }
+  .neg { color: #d32f2f !important; }
+  .pos { color: #1b8a3e !important; }
+  .res tfoot td {
+    background: #f3f8ff; font-size: 16pt; font-weight: 800; color: #d32f2f;
+    border-bottom: none; padding: 0.08in;
+  }
+  .res tfoot td.lab { color: #0e3e8e; font-size: 14.5pt; text-align: left; background: white; }
+
+  .impl { display: flex; flex-direction: column; gap: 0.14in; margin-top: 0.06in; flex: 1; }
+  .impl .item { display: flex; gap: 0.12in; align-items: flex-start; }
+  .impl p { font-size: 15.5pt; line-height: 1.3; color: #2f5290; font-weight: 500; }
+
+  .m8 {
+    flex: 1; min-height: 0;
+    display: grid; grid-template-columns: 6.3in 1fr; gap: 0.12in;
+  }
+  .sfha {
+    font-size: 14pt; color: #1a3f7a; font-weight: 650; line-height: 1.2; margin: 0 0 0.06in;
+  }
+  .sfha b { font-size: 18pt; color: #0c3d8c; }
+  .legend { display: flex; flex-direction: column; gap: 0.05in; margin-top: 0.06in; }
+  .legend div { display: flex; align-items: center; gap: 0.08in; font-size: 11.5pt; color: #1e3f78; font-weight: 600; }
+  .sw { width: 0.28in; height: 0.28in; border-radius: 50%; color: white; font-size: 9pt; font-weight: 800;
+    display: flex; align-items: center; justify-content: center; }
+  .miami-table th { font-size: 11pt; padding: 0.04in 0.04in; }
+  .miami-table td { font-size: 13.5pt; padding: 0.045in 0.04in; }
+  .miami-table td.lab { font-size: 12pt; }
+  .zonehead { font-size: 10.5pt !important; line-height: 1.15; font-weight: 700; }
+  .foot8 {
+    margin-top: 0.08in;
+    background: #fff4c4; border-radius: 0.1in;
+    text-align: center; padding: 0.06in 0.1in;
+    font-size: 14.5pt; font-weight: 750; color: #0e3e8e;
+  }
+  .foot8 b { color: #d32f2f; font-size: 16pt; }
+
+  .s9grid { display: grid; grid-template-columns: 1fr 6.4in; gap: 0.14in; flex: 1; min-height: 0; }
+  .assume { width: 100%; height: 100%; }
+  .assume th { font-size: 12pt; padding: 0.05in 0.08in; text-align: left; }
+  .assume td {
+    text-align: left; font-size: 11.6pt; font-weight: 550; color: #1e3f78;
+    background: #f7fbff; border-bottom: 1.5px solid #e5f0fa;
+    padding: 0.055in 0.08in; line-height: 1.25; vertical-align: top;
+  }
+  .next {
+    margin-top: 0.08in;
+    background: #fff4c4; border-radius: 0.08in;
+    padding: 0.05in 0.1in; font-size: 12pt; color: #1a3f7a; font-weight: 600;
+  }
+  .next b { color: #0c3d8c; }
+  .beach-card {
+    border-radius: 0.12in; overflow: hidden; position: relative;
+    background: linear-gradient(180deg, #9fd4fb, #1f78d0 55%, #f6e2b8 55%, #f3d48a);
+  }
+  .beach-sign {
+    position: absolute; right: 0.12in; top: 0.12in;
+    background: #0c3d8c; color: white; border-radius: 0.08in;
+    padding: 0.06in 0.08in; text-align: center; width: 1.7in;
+    box-shadow: 0 0.04in 0.08in rgba(0,0,0,.2);
+  }
+  .beach-sign b { display: block; font-size: 13pt; letter-spacing: 0.03em; line-height: 1.18; }
+  .beach-sign span { display: block; margin-top: 0.04in; font-size: 12pt; letter-spacing: 0.08em; color: #d6e8ff; }
+
+  /* Distance-readable type and filled panels */
+  .call { font-size: 21pt; line-height: 1.32; padding: 0.14in 0.18in; color: #16325c; }
+  .split { grid-template-rows: minmax(0, 1fr); }
+  .art { height: 100%; min-height: 0; }
+  .qtext { font-size: 22pt; line-height: 1.28; color: #16325c; }
+  .icon { width: 0.58in; height: 0.58in; }
+  .icon svg { width: 0.32in; height: 0.32in; }
+  #s1 .col, #s2 .col { justify-content: center; gap: 0.24in; }
+  #s1 .split { grid-template-columns: 1fr 7.2in; }
+  #s2 .split { grid-template-columns: 1fr 7.15in; }
+  #s1 .body { font-size: 22pt; line-height: 1.38; }
+
+  .side h3 { font-size: 20pt; }
+  .side h3 small { font-size: 13.5pt; color: #3d5278; }
+  .chip { font-size: 18.5pt; padding: 0.1in 0.16in; color: #14325f; }
+  .chip .arr { font-size: 28pt; }
+  .arrow-label { font-size: 15pt; padding: 0.12in 0.1in; }
+
+  #s4 .eqsplit { flex: 1; min-height: 0; }
+  #s4 .eqsplit > .eqbox,
+  #s4 .cal,
+  #s4 .dynbox { margin-top: 0; display: flex; flex-direction: column; min-height: 0; flex: 1; }
+  #s4 .cal, #s4 .dynbox { flex: 1.25; }
+  #s4 .eqbody { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 0.14in; }
+  #s4 .eqline, #s4 .eqline.sm { font-size: 23pt; flex-wrap: nowrap; line-height: 1.15; }
+  #s4 .dyn .eqline { font-size: 20pt; }
+  #s4 .eqbox h3 { font-size: 17pt; padding: 0.07in 0.16in; }
+  #s4 .psi { font-size: 20pt; padding: 0.07in 0.24in; margin-top: 0.12in; }
+  .dyn { gap: 0.16in 0.12in; align-items: center; }
+
+  thead th { font-size: 17pt; padding: 0.09in 0.08in; }
+  tbody td { font-size: 18pt; color: #16325c; }
+  tbody td.lab { font-size: 18pt; }
+  .vals td.num { font-size: 32pt; font-weight: 750; color: #0c3d8c; white-space: nowrap; padding: 0.12in 0.08in; }
+  .vals td.lab { font-size: 20pt; }
+  .inputs { display: flex; flex-direction: column; min-height: 0; }
+  .inputs h3 { font-size: 20pt; margin-bottom: 0.06in; }
+  .inputs .row { flex: 1; align-items: center; font-size: 18pt; padding: 0.06in 0; color: #16325c; }
+  .sim .tag { font-size: 16pt; }
+  .sim .big { font-size: 36pt; }
+  .sim p { font-size: 17pt; line-height: 1.3; color: #16325c; }
+
+  .banner { font-size: 20pt; padding: 0.1in 0.16in; }
+  .res td.lab { font-size: 20pt; }
+  .res td { font-size: 32pt; }
+  .res tfoot td { font-size: 28pt; padding: 0.12in; }
+  .res tfoot td.lab { font-size: 20pt; }
+  .res.miami-table td { font-size: 22pt; }
+  .res.miami-table td.lab { font-size: 16.5pt; }
+
+  .impl { gap: 0.16in; }
+  .impl .item {
+    flex: 1; align-items: center;
+    background: linear-gradient(180deg, #f4f8ff, #e7f1ff);
+    border-radius: 0.14in;
+    padding: 0.16in 0.2in;
+  }
+  .impl p { font-size: 22pt; line-height: 1.32; color: #16325c; }
+
+  .sfha { font-size: 20pt; }
+  .sfha b { font-size: 28pt; }
+  .legend div { font-size: 15pt; color: #14325f; }
+  .sw { width: 0.38in; height: 0.38in; font-size: 13pt; }
+  .miami-table th { font-size: 15pt; padding: 0.06in 0.05in; }
+  .zonehead { font-size: 14pt !important; }
+  .foot8 { font-size: 20pt; padding: 0.09in 0.12in; }
+  .foot8 b { font-size: 24pt; }
+
+  .assume th { font-size: 16pt; padding: 0.09in 0.1in; }
+  .assume td {
+    font-size: 17pt; line-height: 1.32; padding: 0.12in 0.12in;
+    vertical-align: middle; color: #14325f;
+  }
+  .next { font-size: 17pt; padding: 0.1in 0.14in; }
+  .beach-sign { width: 2.45in; padding: 0.1in 0.12in; top: 0.16in; right: 0.16in; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="bub" style="width:0.28in;height:0.28in;left:0.08in;top:6.2in"></div>
+  <div class="bub" style="width:0.18in;height:0.18in;left:0.16in;top:15.6in"></div>
+  <div class="bub" style="width:0.34in;height:0.34in;right:0.06in;top:20in"></div>
+  <div class="bub" style="width:0.16in;height:0.16in;left:17.7in;top:13.85in"></div>
+  <div class="bub" style="width:0.22in;height:0.22in;left:17.85in;top:26.45in"></div>
+  <div class="bub" style="width:0.2in;height:0.2in;left:0.1in;top:36.9in"></div>
+  <div class="bub" style="width:0.26in;height:0.26in;right:0.08in;top:46.4in"></div>
+  <div class="bub" style="width:0.14in;height:0.14in;left:8in;top:26.5in"></div>
+
+  <header class="hero">
+    <svg viewBox="0 0 3600 430" width="36in" height="4.22in" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#eaf7ff"/>
+          <stop offset="1" stop-color="#b7e2fb"/>
+        </linearGradient>
+        <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#7ec8f5"/>
+          <stop offset="1" stop-color="#2f92e4"/>
+        </linearGradient>
+      </defs>
+      <rect width="3600" height="430" fill="url(#sky)"/>
+      <ellipse cx="520" cy="70" rx="90" ry="28" fill="#fff" opacity=".85"/>
+      <ellipse cx="580" cy="78" rx="60" ry="22" fill="#fff" opacity=".8"/>
+      <ellipse cx="2900" cy="60" rx="100" ry="26" fill="#fff" opacity=".8"/>
+      <ellipse cx="2980" cy="72" rx="50" ry="18" fill="#fff" opacity=".75"/>
+      <!-- left houses -->
+      <g transform="translate(40,150)">
+        <rect x="0" y="80" width="70" height="70" rx="3" fill="#f4d7b0" stroke="#c48a55" stroke-width="3"/>
+        <polygon points="0,80 35,40 70,80" fill="#d96b4c"/>
+        <rect x="28" y="110" width="16" height="40" fill="#8d5a32"/>
+        <rect x="90" y="60" width="90" height="90" rx="3" fill="#f7e2c4" stroke="#c48a55" stroke-width="3"/>
+        <polygon points="85,60 135,18 185,60" fill="#e07a45"/>
+        <rect x="122" y="100" width="22" height="50" fill="#8d5a32"/>
+        <rect x="100" y="78" width="16" height="14" fill="#9fd4fb"/>
+        <rect x="150" y="78" width="16" height="14" fill="#9fd4fb"/>
+        <!-- palms -->
+        <rect x="210" y="90" width="8" height="60" fill="#6b8f4e"/>
+        <ellipse cx="214" cy="88" rx="28" ry="10" fill="#3e8f4a" transform="rotate(-30 214 88)"/>
+        <ellipse cx="214" cy="88" rx="28" ry="10" fill="#2f7a3a" transform="rotate(20 214 88)"/>
+        <ellipse cx="214" cy="86" rx="26" ry="9" fill="#4ea85a" transform="rotate(-70 214 86)"/>
+      </g>
+      <!-- right skyline -->
+      <g fill="#1e5ea8" opacity=".9">
+        <rect x="2920" y="210" width="46" height="150"/>
+        <rect x="2980" y="170" width="36" height="190"/>
+        <rect x="3030" y="230" width="54" height="130"/>
+        <polygon points="3090,250 3116,140 3142,250"/>
+        <rect x="3148" y="190" width="40" height="170"/>
+        <rect x="3200" y="240" width="70" height="120"/>
+        <rect x="3280" y="200" width="32" height="160"/>
+        <rect x="3320" y="250" width="80" height="110"/>
+      </g>
+      <!-- yellow bridge -->
+      <path d="M2500 300 Q2780 120 3060 300" fill="none" stroke="#f2c14e" stroke-width="14"/>
+      <path d="M2500 300 Q2780 150 3060 300" fill="none" stroke="#e0a82e" stroke-width="6"/>
+      <path d="M2580 300 L2620 230 M2680 250 L2700 190 M2860 190 L2880 250 M2940 230 L2980 300" stroke="#e0a82e" stroke-width="4"/>
+      <!-- waterline wave -->
+      <path d="M0 360 C 200 330, 400 390, 600 360 C 900 320, 1100 400, 1400 360 C 1700 320, 1900 400, 2200 355 C 2500 310, 2800 400, 3100 350 C 3300 320, 3450 370, 3600 340 L3600 430 L0 430 Z" fill="url(#water)"/>
+      <path d="M0 385 C 300 360, 500 410, 800 385 C 1100 355, 1400 420, 1700 385 C 2100 345, 2400 420, 2800 380 C 3100 350, 3400 400, 3600 370" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="6"/>
+    </svg>
+    <div class="road-sign"><b>ROAD</b><b>CLOSED</b></div>
+    <div class="policy-sign">
+      <b>HIGHER</b>
+      <b>RISK PRICING</b>
+      <b>MORE REFUNDS</b>
+      <b>MORE RESILIENT</b>
+      <b>HOUSING MARKETS</b>
+    </div>
+    <div class="hero-copy">
+      <h1>Safer Ground, Tighter Markets:</h1>
+      <p class="subtitle">A Dynamic Two-Market Model of Housing Adjustment under <b>Risk Rating 2.0</b></p>
+      <p class="authors">Kosar Hosseini <span class="dotsep">·</span> Katherine Yoder Zipp <span class="dotsep">·</span> Scott Colby <span class="dotsep">·</span> Zhengqi Liu</p>
+      <p class="affil">Pennsylvania State University <span class="dotsep">·</span> SUNY Morrisville</p>
+    </div>
+  </header>
+
+  <!-- 1 Motivation -->
+  <section class="card" id="s1">
+    <div class="hd">
+      <div class="badge">1</div>
+      <div>
+        <h2>Motivation</h2>
+        <p class="kicker">Why this matters</p>
+      </div>
+    </div>
+    <div class="split">
+      <div class="col">
+        <p class="body">Flooding is a common and costly natural hazard in the United States. Historically subsidized or weakly risk-based flood insurance lowered the true cost of high-risk housing and encouraged development in exposed areas.</p>
+        <p class="body"><strong>Risk Rating 2.0 (RR2)</strong> was introduced in 2023 to align NFIP premiums more closely with property-level flood risk.</p>
+      </div>
+      <div class="art">
+        <svg viewBox="0 0 470 360">
+          <rect width="470" height="360" fill="#e7f5ff"/>
+          <rect y="230" width="470" height="130" fill="#8ecaf3"/>
+          <path d="M0 240 Q40 220 80 240 T160 240 T240 240 T320 240 T400 240 T470 230 V360 H0 Z" fill="#5eb0ea" opacity=".85"/>
+          <!-- building -->
+          <rect x="250" y="70" width="190" height="180" rx="4" fill="#f7f4ef" stroke="#c5b8a8"/>
+          <rect x="250" y="70" width="190" height="36" fill="#1565c0"/>
+          <text x="345" y="95" text-anchor="middle" font-family="Inter, sans-serif" font-size="18" font-weight="700" fill="white">INSURANCE</text>
+          <g fill="#cfe3f5">
+            <rect x="268" y="120" width="28" height="22"/><rect x="306" y="120" width="28" height="22"/><rect x="344" y="120" width="28" height="22"/><rect x="382" y="120" width="28" height="22"/>
+            <rect x="268" y="152" width="28" height="22"/><rect x="306" y="152" width="28" height="22"/><rect x="344" y="152" width="28" height="22"/><rect x="382" y="152" width="28" height="22"/>
+            <rect x="268" y="184" width="28" height="22"/><rect x="306" y="184" width="28" height="22"/><rect x="344" y="184" width="28" height="22"/><rect x="382" y="184" width="28" height="22"/>
+          </g>
+          <rect x="320" y="206" width="40" height="44" fill="#8d6a45"/>
+          <!-- cars in water -->
+          <g transform="translate(30,248)">
+            <rect x="0" y="18" width="110" height="28" rx="8" fill="#5c6b7a"/>
+            <rect x="18" y="4" width="60" height="20" rx="4" fill="#8aa0b3"/>
+            <circle cx="24" cy="48" r="9" fill="#222"/><circle cx="86" cy="48" r="9" fill="#222"/>
+          </g>
+          <g transform="translate(150,258)">
+            <rect x="0" y="16" width="90" height="24" rx="7" fill="#d0d5dc"/>
+            <rect x="16" y="4" width="48" height="16" rx="3" fill="#eef3f7"/>
+            <circle cx="20" cy="42" r="8" fill="#222"/><circle cx="70" cy="42" r="8" fill="#222"/>
+          </g>
+          <path d="M0 300 Q30 286 60 300 T120 300 T180 300 T240 300 T300 300 T360 300 T420 300 T470 292" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="4"/>
+        </svg>
+      </div>
+    </div>
+    <div class="call" style="margin-top:0.1in;">
+      <b>Key question:</b> Does a policy targeted at floodplain homes affect only those areas, or does it also spill over into safer areas, and tighter nearby markets?
+    </div>
+  </section>
+
+  <!-- 2 Research question -->
+  <section class="card" id="s2">
+    <div class="hd">
+      <div class="badge">2</div>
+      <div>
+        <h2>Research Question &amp; Case Study</h2>
+      </div>
+    </div>
+    <div class="call" style="margin-bottom:0.12in;">
+      How does risk-based insurance pricing affect prices and housing stocks both inside and outside the floodplain?
+    </div>
+    <div class="split">
+      <div class="col" style="justify-content:space-around;">
+        <div class="qrow">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11z"/><circle cx="12" cy="10" r="2.2" fill="white" stroke="none"/></svg>
+          </div>
+          <div class="qtext"><b>Case study:</b> Allegheny County, PA</div>
+        </div>
+        <div class="qrow">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="white"><ellipse cx="12" cy="7" rx="7" ry="3"/><path d="M5 7v4c0 1.7 3.1 3 7 3s7-1.3 7-3V7"/><path d="M5 11v4c0 1.7 3.1 3 7 3s7-1.3 7-3v-4" opacity=".85"/></svg>
+          </div>
+          <div class="qtext"><b>Data:</b> CoreLogic parcel-level residential data + FEMA National Flood Hazard Layer</div>
+        </div>
+        <div class="qrow">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 9h16M8 3v4M16 3v4"/></svg>
+          </div>
+          <div class="qtext"><b>Baseline year:</b> 2022</div>
+        </div>
+      </div>
+      <div class="art">
+        <svg viewBox="0 0 520 420">
+          <rect width="520" height="420" rx="8" fill="#f4f9ff"/>
+          <text x="260" y="36" text-anchor="middle" font-family="Inter, sans-serif" font-size="22" font-weight="750" fill="#0c3d8c">Allegheny County, PA</text>
+          <text x="260" y="60" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#3a6498">Properties near Flood Zones (2022)</text>
+          <!-- county shape -->
+          <path d="M150 100 L250 86 L340 100 L400 140 L420 200 L390 270 L330 320 L240 340 L160 310 L110 250 L100 180 Z" fill="#7db87a" stroke="#2f6b3a" stroke-width="3"/>
+          <!-- rivers / flood zones -->
+          <path d="M120 200 C180 190, 220 210, 260 200 C310 186, 350 210, 400 190" fill="none" stroke="#e36a2c" stroke-width="8" stroke-linecap="round"/>
+          <path d="M200 120 C210 180, 230 220, 250 300" fill="none" stroke="#d64545" stroke-width="5" stroke-linecap="round"/>
+          <path d="M120 200 C180 190, 220 210, 260 200 C310 186, 350 210, 400 190" fill="none" stroke="#f4c7a4" stroke-width="2"/>
+          <!-- legend -->
+          <g font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#1e3f78">
+            <rect x="36" y="300" width="16" height="16" rx="2" fill="#d64545"/><text x="58" y="314">A</text>
+            <rect x="36" y="324" width="16" height="16" rx="2" fill="#e36a2c"/><text x="58" y="338">AE</text>
+            <rect x="36" y="348" width="16" height="16" rx="2" fill="#7db87a"/><text x="58" y="362">X</text>
+          </g>
+          <!-- scale -->
+          <g font-family="Inter, sans-serif" font-size="13" fill="#1e3f78" font-weight="650">
+            <line x1="250" y1="360" x2="430" y2="360" stroke="#1e3f78" stroke-width="2"/>
+            <line x1="250" y1="354" x2="250" y2="366" stroke="#1e3f78" stroke-width="2"/>
+            <line x1="340" y1="354" x2="340" y2="366" stroke="#1e3f78" stroke-width="2"/>
+            <line x1="430" y1="354" x2="430" y2="366" stroke="#1e3f78" stroke-width="2"/>
+            <text x="250" y="382" text-anchor="middle">0</text>
+            <text x="340" y="382" text-anchor="middle">10</text>
+            <text x="430" y="382" text-anchor="middle">20 Miles</text>
+          </g>
+          <!-- compass -->
+          <g transform="translate(455,250)">
+            <polygon points="0,-28 8,6 0,0 -8,6" fill="#0c3d8c"/>
+            <polygon points="0,28 8,-6 0,0 -8,-6" fill="#b9cbe4"/>
+            <text x="0" y="-34" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="800" fill="#0c3d8c">N</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 Mechanism -->
+  <section class="card" id="s3">
+    <div class="hd">
+      <div class="badge">3</div>
+      <div>
+        <h2>Economic Mechanism</h2>
+        <p class="kicker">How risk pricing affects housing markets</p>
+      </div>
+    </div>
+    <div class="mech">
+      <div class="side in">
+        <h3>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="#c62828"><path d="M4 11 L12 4 L20 11 V20 H4 Z"/></svg>
+          <span>Inside floodplain<small>(higher insurance costs)</small></span>
+        </h3>
+        <div class="chip down"><span>RR2 premium</span><span class="arr">↑</span></div>
+        <div class="chip down"><span>ownership cost</span><span class="arr">↑</span></div>
+        <div class="chip down"><span>willingness to pay</span><span class="arr">↓</span></div>
+        <div class="chip down"><span>price</span><span class="arr">↓</span></div>
+        <div class="chip down"><span>construction / redevelopment</span><span class="arr">↓</span></div>
+        <div class="chip down"><span>long-run stock</span><span class="arr">↓</span></div>
+      </div>
+      <div class="mid">
+        <div class="arrow-label">DISPLACEMENT<br/>AND SPILLOVER</div>
+        <svg viewBox="0 0 220 250" width="2.6in" height="2.9in" aria-hidden="true">
+          <rect width="220" height="250" rx="12" fill="#e7f4ff"/>
+          <!-- house -->
+          <path d="M40 118 L110 70 L180 118 V150 H40 Z" fill="#f4e2c4" stroke="#d7b48a"/>
+          <polygon points="30,118 110,52 190,118" fill="#e07a45"/>
+          <rect x="96" y="124" width="28" height="26" fill="#8d5a32"/>
+          <!-- family -->
+          <g fill="#1e4f96">
+            <circle cx="70" cy="175" r="12"/>
+            <rect x="58" y="188" width="24" height="36" rx="8"/>
+            <circle cx="110" cy="168" r="14"/>
+            <rect x="96" y="184" width="28" height="42" rx="8"/>
+            <circle cx="150" cy="182" r="10"/>
+            <rect x="140" y="193" width="20" height="30" rx="7"/>
+          </g>
+          <!-- suitcases -->
+          <rect x="48" y="214" width="14" height="16" rx="2" fill="#5c6b7a"/>
+          <rect x="158" y="214" width="12" height="14" rx="2" fill="#5c6b7a"/>
+          <!-- water -->
+          <path d="M0 230 Q30 220 55 230 T110 230 T165 230 T220 226 V250 H0 Z" fill="#7ec4f3" opacity=".9"/>
+        </svg>
+      </div>
+      <div class="side out">
+        <h3>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="#0d47a1"><path d="M4 11 L12 4 L20 11 V20 H4 Z"/></svg>
+          <span>Outside floodplain<small>(safer areas)</small></span>
+        </h3>
+        <div class="chip"><span>demand shifts toward safer housing</span></div>
+        <div class="chip up"><span>price</span><span class="arr">↑</span></div>
+        <div class="chip up"><span>construction</span><span class="arr">↑</span></div>
+        <div class="chip up"><span>long-run stock</span><span class="arr">↑</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 Model -->
+  <section class="card" id="s4">
+    <div class="hd">
+      <div class="badge">4</div>
+      <div>
+        <h2>Dynamic Two-Market Model</h2>
+        <p class="kicker">Housing prices and supply over time</p>
+      </div>
+    </div>
+    <div class="eqsplit">
+      <div class="eqbox" style="margin-top:0">
+        <h3>Demand side <span>(inverse demand function)</span></h3>
+        <div class="eqbody">
+          <div class="eqline">
+            <span>R(S<sub>N</sub> + S<sub>F</sub>) =</span>
+            <span class="frac">
+              <span class="top">α(W − β<sub>c</sub>)</span>
+              <span class="bot">(S<sub>N</sub> + S<sub>F</sub>) − β<sub>s</sub>(1 − α)</span>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="eqbox" style="margin-top:0">
+        <h3>Supply side <span>(housing supply function)</span></h3>
+        <div class="eqbody">
+          <div class="eqline">Y<sub>i</sub>(P<sub>i</sub>) = a<sub>i</sub> P<sub>i</sub><sup>ε</sup> ,</div>
+          <div class="eqline" style="margin-top:0.04in">i ∈ {N, F}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="eqbox cal">
+      <h3>Calibration equations</h3>
+      <div class="eqbody">
+        <div class="eqsplit">
+          <div class="eqline sm">
+            <span>ε<sub>s,w</sub> =</span>
+            <span class="frac">
+              <span class="top">αW</span>
+              <span class="bot">R<sup>eq</sup>β<sub>s</sub>(1 − α) + α(W − β<sub>s</sub>)</span>
+            </span>
+          </div>
+          <div class="eqline sm">
+            <span>θ = α +</span>
+            <span class="frac">
+              <span class="top">R<sup>eq</sup>β<sub>s</sub>(1 − α) + αβ<sub>c</sub></span>
+              <span class="bot">W</span>
+            </span>
+          </div>
+        </div>
+        <div class="eqline" style="margin-top:0.08in">
+          <span>a<sub>i</sub> =</span>
+          <span class="frac">
+            <span class="top">δ S<sub>i</sub><sup>eq</sup></span>
+            <span class="bot">(P)<sup>ε</sup></span>
+          </span>
+          <span>, &nbsp; i ∈ {N, F}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="eqbox dynbox">
+      <h3>Dynamic system <span>(N: non-floodplain, F: floodplain)</span></h3>
+      <div class="eqbody">
+        <div class="dyn">
+          <div class="eqline sm">Ṗ<sub>N</sub>(t) = ψ<sub>N</sub> P<sub>N</sub>(t) − R(S<sub>N</sub>(t) + S<sub>F</sub>(t))</div>
+          <div class="eqline sm">Ṡ<sub>N</sub>(t) = a<sub>N</sub> P<sub>N</sub>(t)<sup>ε</sup> − δ S<sub>N</sub>(t)</div>
+          <div class="eqline sm">Ṗ<sub>F</sub>(t) = ψ<sub>F</sub>(m) P<sub>F</sub>(t) − R(S<sub>N</sub>(t) + S<sub>F</sub>(t))</div>
+          <div class="eqline sm">Ṡ<sub>F</sub>(t) = a<sub>F</sub> P<sub>F</sub>(t)<sup>ε</sup> − δ S<sub>F</sub>(t)</div>
+        </div>
+        <div class="psi">ψ<sub>F</sub>(m) = ψ<sub>F</sub><sup>0</sup> + f m &gt; ψ<sub>N</sub></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 Calibration -->
+  <section class="card" id="s5">
+    <div class="hd">
+      <div class="badge">5</div>
+      <div>
+        <h2>Allegheny County Calibration (2022)</h2>
+      </div>
+    </div>
+    <table class="vals">
+      <thead>
+        <tr><th></th><th>Non-FP</th><th>FP</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="lab">Housing stock</td><td class="num">379,126</td><td class="num">4,036</td></tr>
+        <tr><td class="lab">Median price</td><td class="num">$218,000</td><td class="num">$110,000</td></tr>
+        <tr><td class="lab">Market share</td><td class="num">98.95%</td><td class="num">1.05%</td></tr>
+      </tbody>
+    </table>
+    <div class="bottom5">
+      <div class="inputs">
+        <h3>Calibration inputs</h3>
+        <div class="row"><span>Median income</span><b>$76,000</b></div>
+        <div class="row"><span>Supply elasticity</span><b>1.20</b></div>
+        <div class="row"><span>User cost rate</span><b>0.059</b></div>
+        <div class="row"><span>Housing expenditure share</span><b>0.26</b></div>
+        <div class="row"><span>Income elasticity of housing demand</span><b>0.67</b></div>
+      </div>
+      <div class="sim">
+        <svg width="54" height="40" viewBox="0 0 54 40" aria-hidden="true">
+          <rect x="4" y="18" width="10" height="18" rx="2" fill="#90caf9"/>
+          <rect x="20" y="10" width="10" height="26" rx="2" fill="#42a5f5"/>
+          <rect x="36" y="2" width="10" height="34" rx="2" fill="#1565c0"/>
+        </svg>
+        <div class="tag">Main simulation</div>
+        <div class="big">82% increase</div>
+        <p>in the flood-insurance premium component (relative to baseline).</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 Results -->
+  <section class="card" id="s6">
+    <div class="hd">
+      <div class="badge">6</div>
+      <div>
+        <h2>Main Results</h2>
+      </div>
+    </div>
+    <div class="banner">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M4 11 L12 4 L20 11 V20 H4 Z"/></svg>
+      Allegheny County — 82% premium increase
+    </div>
+    <table class="res" style="flex:1">
+      <thead>
+        <tr>
+          <th style="text-align:left">Outcome</th>
+          <th>Floodplain market</th>
+          <th>Non-floodplain market</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="lab">Short-run price change</td>
+          <td class="neg">↓ &nbsp;−29.0%</td>
+          <td class="pos">↑ &nbsp;+0.05%</td>
+        </tr>
+        <tr>
+          <td class="lab">Long-run price change</td>
+          <td class="neg">↓ &nbsp;−29.0%</td>
+          <td class="pos">↑ &nbsp;+0.15%</td>
+        </tr>
+        <tr>
+          <td class="lab">Long-run stock change</td>
+          <td class="neg">↓ &nbsp;−33.0%</td>
+          <td class="pos">↑ &nbsp;+0.18%</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td class="lab">Total regional stock change</td>
+          <td colspan="2">↓ &nbsp;−0.17%</td>
+        </tr>
+      </tfoot>
+    </table>
+  </section>
+
+  <!-- 7 Policy -->
+  <section class="card" id="s7">
+    <div class="hd">
+      <div class="badge">7</div>
+      <div>
+        <h2>Policy Implications</h2>
+        <p class="kicker">From risk pricing to more resilient housing markets</p>
+      </div>
+    </div>
+    <div class="impl">
+      <div class="item">
+        <div class="icon" style="width:0.56in;height:0.56in">
+          <svg viewBox="0 0 24 24" width="22" height="22"><rect x="3" y="12" width="4" height="8" fill="white"/><rect x="10" y="8" width="4" height="12" fill="white"/><rect x="17" y="4" width="4" height="16" fill="white"/></svg>
+        </div>
+        <p>RR2 improves risk pricing and can discourage excessive exposure in high-risk areas.</p>
+      </div>
+      <div class="item">
+        <div class="icon" style="width:0.56in;height:0.56in">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="white"><path d="M4 11 L12 4 L20 11 V20 H15 V14 H9 V20 H4 Z"/></svg>
+        </div>
+        <p>Spillovers affect safer markets too. Complementary housing-supply and affordability policies may be needed in safer areas.</p>
+      </div>
+      <div class="item">
+        <div class="icon" style="width:0.56in;height:0.56in">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="white"><path d="M12 22 C7 18 4 14 4 10 a8 8 0 0 1 16 0 c0 4-3 8-8 12z"/><circle cx="12" cy="10" r="2.4" fill="#0d4eae"/></svg>
+        </div>
+        <p>Place-based climate policy should consider regional spillovers, not only direct treatment effects.</p>
+      </div>
+    </div>
+    <div class="art" style="height:2.35in; margin-top:0.12in; flex:0 0 auto;">
+      <svg viewBox="0 0 800 160" preserveAspectRatio="xMidYMid slice">
+        <rect width="800" height="160" fill="#d9efff"/>
+        <path d="M0 110 Q40 90 80 110 T160 110 T240 100 T320 112 T400 98 T480 112 T560 100 T640 112 T720 100 T800 108 V160 H0 Z" fill="#8fd0f5"/>
+        <g fill="#f4e2c4" stroke="#e0b98a">
+          <polygon points="40,100 70,70 100,100" fill="#e07a45" stroke="none"/>
+          <rect x="48" y="100" width="44" height="36"/>
+          <polygon points="140,108 175,74 210,108" fill="#d96b4c" stroke="none"/>
+          <rect x="150" y="108" width="50" height="32"/>
+          <polygon points="250,96 290,58 330,96" fill="#e07a45" stroke="none"/>
+          <rect x="262" y="96" width="56" height="42"/>
+        </g>
+        <g fill="#1e5ea8" opacity=".85">
+          <rect x="520" y="40" width="28" height="80"/>
+          <rect x="556" y="20" width="22" height="100"/>
+          <rect x="586" y="50" width="34" height="70"/>
+          <rect x="628" y="30" width="18" height="90"/>
+          <rect x="654" y="58" width="40" height="62"/>
+          <rect x="702" y="36" width="24" height="84"/>
+        </g>
+        <rect x="430" y="78" width="8" height="40" fill="#6b8f4e"/>
+        <ellipse cx="434" cy="76" rx="22" ry="8" fill="#3e8f4a" transform="rotate(-25 434 76)"/>
+        <ellipse cx="434" cy="74" rx="20" ry="7" fill="#2f7a3a" transform="rotate(30 434 74)"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- 8 Miami -->
+  <section class="card" id="s8">
+    <div class="hd" style="margin-bottom:0.04in">
+      <div class="badge">8</div>
+      <div style="flex:1">
+        <div class="banner" style="margin:0.04in 0 0">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M4 11 L12 4 L20 11 V20 H4 Z"/></svg>
+          Miami-Dade extension — 85% premium increase
+        </div>
+      </div>
+    </div>
+    <div class="m8">
+      <div>
+        <p class="sfha"><b>50.48%</b> of properties are within SFHA.</p>
+        <div style="display:grid; grid-template-columns: 2.5in 1fr; gap:0.08in; align-items:center;">
+          <svg viewBox="0 0 220 300" width="2.45in" height="3.3in">
+            <rect width="220" height="300" fill="#e7f5ff" rx="8"/>
+            <text x="110" y="22" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="800" fill="#0c3d8c">Miami-Dade</text>
+            <text x="110" y="38" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="650" fill="#1e4f96">County, FL</text>
+            <path d="M70 55 L130 50 L155 80 L160 140 L150 200 L145 250 L120 275 L80 260 L60 210 L55 140 L58 90 Z" fill="#7db87a" stroke="#245c30" stroke-width="2"/>
+            <path d="M90 130 L150 125 L155 175 L140 210 L95 200 Z" fill="#f0a05a"/>
+            <path d="M115 175 L158 168 L152 250 L130 270 L108 240 Z" fill="#e15b5b"/>
+            <text x="78" y="110" font-family="Inter, sans-serif" font-size="22" font-weight="800" fill="white">X</text>
+            <text x="112" y="175" font-family="Inter, sans-serif" font-size="22" font-weight="800" fill="white">A</text>
+            <text x="124" y="230" font-family="Inter, sans-serif" font-size="22" font-weight="800" fill="white">V</text>
+          </svg>
+          <div class="legend">
+            <div><span class="sw" style="background:#2e9e4f">X</span> X — outside SFHA (safer market)</div>
+            <div><span class="sw" style="background:#ef8b2c">A</span> A — inland (high-hazard)</div>
+            <div><span class="sw" style="background:#e23b3b">V</span> V — coastal (high-hazard)</div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex; flex-direction:column; min-height:0;">
+        <table class="res miami-table" style="flex:1">
+          <thead>
+            <tr>
+              <th colspan="4">Percentage changes</th>
+            </tr>
+            <tr>
+              <th></th>
+              <th class="zonehead">Short run<br/>(outside)</th>
+              <th class="zonehead" style="background:#f6c48a;color:#6a3b10">A<br/>(inland)</th>
+              <th class="zonehead" style="background:#e23b3b">V<br/>(coastal)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="lab">Short-run price change</td>
+              <td class="pos">+1.04%</td>
+              <td class="neg">−6.79%</td>
+              <td class="neg">+17.94%</td>
+            </tr>
+            <tr>
+              <td class="lab">Long-run price change</td>
+              <td class="pos">+2.60%</td>
+              <td class="neg">−5.25%</td>
+              <td class="neg">−16.68%</td>
+            </tr>
+            <tr>
+              <td class="lab">Long-run stock change</td>
+              <td class="pos">+3.13%</td>
+              <td class="neg">−6.26%</td>
+              <td class="neg">−19.67%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="foot8">Approx. total regional supply change: <b>−1.69%</b></div>
+  </section>
+
+  <!-- 9 Assumptions -->
+  <section class="card" id="s9">
+    <div class="hd" style="margin-bottom:0.06in">
+      <div class="badge">9</div>
+      <div>
+        <h2>Key Modeling Assumptions &amp; Future Extensions</h2>
+      </div>
+    </div>
+    <div class="s9grid">
+      <div style="display:flex; flex-direction:column; min-height:0;">
+        <table class="assume">
+          <thead>
+            <tr>
+              <th>Baseline Assumption</th>
+              <th>Alternative to Explore</th>
+              <th>Future Research</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Perfect substitution. Common rental value based on total housing stock.</td>
+              <td>Imperfect spatial substitution (CES).</td>
+              <td>Examine neighborhood choices and migration patterns.</td>
+            </tr>
+            <tr>
+              <td>Common supply elasticity. Same elasticity in both markets.</td>
+              <td>Market-specific supply elasticities.</td>
+              <td>Use developable land and zoning constraints to inform calibration.</td>
+            </tr>
+            <tr>
+              <td>Mobility not explicitly modeled. No household relocation decisions.</td>
+              <td>Moving costs and mobility frictions.</td>
+              <td>Calibrate relocation frictions using empirical literature and micro-data.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="next"><b>Next steps:</b> Assess how spatial substitution, supply constraints, and mobility frictions affect housing-market spillovers.</div>
+      </div>
+      <div class="beach-card">
+        <svg viewBox="0 0 640 360" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
+          <rect width="640" height="200" fill="#8ecff8"/>
+          <rect y="200" width="640" height="160" fill="#f3d48a"/>
+          <path d="M0 200 Q40 180 80 200 T160 200 T240 190 T320 205 T400 190 T480 205 T560 192 T640 200 V230 H0 Z" fill="#3d9be8"/>
+          <!-- palms -->
+          <g>
+            <rect x="70" y="150" width="8" height="70" fill="#6d8f45"/>
+            <ellipse cx="74" cy="148" rx="36" ry="12" fill="#2f8a3e" transform="rotate(-30 74 148)"/>
+            <ellipse cx="74" cy="146" rx="34" ry="11" fill="#3ea84c" transform="rotate(25 74 146)"/>
+            <ellipse cx="74" cy="144" rx="30" ry="10" fill="#237a34" transform="rotate(-75 74 144)"/>
+          </g>
+          <g>
+            <rect x="520" y="130" width="10" height="90" fill="#6d8f45"/>
+            <ellipse cx="525" cy="128" rx="42" ry="13" fill="#2f8a3e" transform="rotate(-20 525 128)"/>
+            <ellipse cx="525" cy="126" rx="40" ry="12" fill="#46b056" transform="rotate(35 525 126)"/>
+          </g>
+          <!-- skyline -->
+          <g fill="#1d5fae">
+            <rect x="180" y="90" width="26" height="110"/>
+            <rect x="214" y="60" width="20" height="140"/>
+            <rect x="242" y="100" width="34" height="100"/>
+            <rect x="284" y="74" width="16" height="126"/>
+            <rect x="308" y="110" width="40" height="90"/>
+          </g>
+          <!-- family -->
+          <g fill="#163e86">
+            <circle cx="250" cy="250" r="16"/>
+            <path d="M232 268 h36 v48 h-36z" rx="10"/>
+            <circle cx="310" cy="242" r="18"/>
+            <rect x="290" y="262" width="40" height="56" rx="12"/>
+            <circle cx="365" cy="258" r="13"/>
+            <rect x="351" y="272" width="28" height="42" rx="10"/>
+          </g>
+          <rect x="220" y="300" width="16" height="18" rx="2" fill="#5c6b7a"/>
+          <rect x="390" y="292" width="14" height="16" rx="2" fill="#5c6b7a"/>
+        </svg>
+        <div class="beach-sign">
+          <b>SAFER COMMUNITIES</b>
+          <b>AHEAD ↑</b>
+          <span>MIAMI BEACH</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>
